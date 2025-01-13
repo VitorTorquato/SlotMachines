@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SlotMachine from "../../../utils/classes/slotMachine";
-import { SlotMachineInterface } from "../../../utils/types/slotMachine.type"
 
-import { fetchSlotMachines } from "../../../api/api";
+
 
 interface SelecetedSlotMachineProps{
     slotMachine:any;
@@ -15,7 +14,7 @@ export function SelectedSlotMachine({slotMachine,userBalance,setUserBalance}: Se
    
     const [curretnBet , setCurrentBet] = useState<number>(0);
 
-    const slotMachineInstance = new SlotMachine(slotMachine.id, slotMachine.name);
+    const slotMachineInstance = new SlotMachine(slotMachine.id, slotMachine.name , slotMachine.betAmounts);
 
     function handleBet(bet:number){
         setCurrentBet(bet);
@@ -31,21 +30,7 @@ export function SelectedSlotMachine({slotMachine,userBalance,setUserBalance}: Se
 
     
 
-    // useEffect(() => {
-    //     async function fetchData(){
-    //         const response:any = await fetchSlotMachines();
-    //         const data = response.slotMachines.map((slotMachine:any) => ({
-    //             id: slotMachine.id,
-    //             name:slotMachine.name,
-    //             betAmounts: slotMachine.betAmounts
-    //         }))
-         
-    
-    //     }
 
-
-    //     fetchData();
-    // } , [])
         
     return(
 
@@ -54,7 +39,13 @@ export function SelectedSlotMachine({slotMachine,userBalance,setUserBalance}: Se
             <div>
                 <h3>Place your bet</h3>
                 <div className="border">
-                   <input className="w-full" type="number" />
+                {
+                    slotMachineInstance.availableBetAmounts.map((amount:number) => (
+                        <button
+                        onClick={() => handleBet(amount)}
+                        key={amount}>${amount}</button>
+                    ))
+                   }
                 </div>
             </div>
 

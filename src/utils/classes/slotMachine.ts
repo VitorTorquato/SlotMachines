@@ -4,13 +4,14 @@ class SlotMachine implements SlotMachineInterface {
         id:number;
         name: string;
         betAmount: number;
+        availableBetAmounts: number[];
 
 
-        constructor(id:number,name:string){
+        constructor(id:number,name:string,availableBetAmounts: number[] ){
             this.id = id;
             this.name = name;
             this.betAmount = 0
-          
+            this.availableBetAmounts = availableBetAmounts; 
         }
 
          placeBet(betAmount: number): void {

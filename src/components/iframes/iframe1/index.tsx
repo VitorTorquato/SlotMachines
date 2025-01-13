@@ -1,9 +1,9 @@
-import { useEffect,useState } from "react";
+import {useEffect, useState } from "react";
+import SlotMachine from "../../../utils/classes/slotMachine";
 
 
-
+import {slotMachines} from '../../../api/api.json';
 import { SlotMachineInterface } from "../../../utils/types/slotMachine.type";
-import { fetchSlotMachines } from "../../../api/api";
 
 interface SlotMachineListProps{
  onSelectSlotMachine:(machine:any) => void;
@@ -11,23 +11,15 @@ interface SlotMachineListProps{
 
 export function SlotMachineList({onSelectSlotMachine} : SlotMachineListProps){
     
-        const [slotMachines , setSlotMachines] = useState<SlotMachineInterface[]>([])
+        const [slotMachine , setSlotMachine] = useState<SlotMachineInterface[]>([]);
 
 
-        useEffect(() => {
-            async function fetchData(){
-                const response:any = await fetchSlotMachines();
-                const data = response.slotMachines.map((slotMachine:any) => ({
-                    id: slotMachine.id,
-                    name:slotMachine.name,
-                    betAmounts: slotMachine.betAmounts
-                }))
-                setSlotMachines(data)
-            }
-    
-    
-            fetchData();
-        } , [])
+    useEffect(() => {
+        const machines = slotMachines.map((data) => new SlotMachine(data.id, data.name , data.betAmounts))
+        setSlotMachine(machines)
+        console.log(machines)
+   
+    } , [])
     return(
 
         <div>
