@@ -13,15 +13,21 @@ export function IframeParentContainer(){
 
     return(
         <div className="w-full flex gap-9  justify-center">
-            <div className="border p-4" title="Selected slot machine">
-            <SlotMachineList onSelectSlotMachine={handleSelectedMachine}/>
-            <div>
-                <span>{`User Balance: ${userBalance}`}</span>
+            <div className="flex-1 border  flex flex-col">
+
+                <div className="flex flex-col p-4 items-center">
+                <SlotMachineList onSelectSlotMachine={handleSelectedMachine}/>
+                
+
+                </div>
+                <div className=" bg-zinc-400 px-1">
+
+                        <span className=" text-white text-sm ">{`Balance: $${userBalance}`}</span>
+                </div>
             </div>
 
-            </div>
-
-            <div className="border p-4" title="Selected slot machine">
+            
+            <div className="flex-1 border p-4 flex flex-col items-center">
                 {
                     selectedSlotMachine ? (
                         <SelectedSlotMachine
@@ -29,7 +35,7 @@ export function IframeParentContainer(){
                         userBalance={userBalance}
                         setUserBalance={setUserBalance}
                         />
-                    ) : <p>Select a slot machine</p>
+                    ) : <div className="w-full h-full flex items-center justify-center"><p className="text-white text-4xl">Select a slot machine</p></div>
                 }
             </div>
         </div>

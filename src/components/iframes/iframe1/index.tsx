@@ -23,19 +23,24 @@ export function SlotMachineList({onSelectSlotMachine} : SlotMachineListProps){
     return(
 
         <div>
-            <h2>Available Slot machines:</h2>
+            <p className="text-white text-2xl text-center">Place your bet now, your chance to win big starts here!</p>
+            <h2 className="text-white text-1xl mt-4 text-center mb-2">Available Slot machine:</h2>
 
-                <ul className="space-y-2">
-                    {slotMachines.map((machine) => (
-                        <li 
-                        className="cursor-pointer"
-                        key={machine.id}
-                        onClick={() => onSelectSlotMachine(machine)}
-                        >
-                            {`${machine.name} Id: ${machine.id}`}
-                        </li>
+              <div>
+              {slotMachines.map((machine) => (
+                        <div className="flex flex-col gap-2 mb-2">
+                          <button
+                          className="border-2 rounded-md p-1 text-white transform hover:scale-105 hover:-translate-y-1 hover:text-blue-300 duration-300 ease-in-out"
+                          onClick={() => onSelectSlotMachine(machine)}
+                          >
+                            {machine.name}
+                        </button>
+                           <div className="flex items-center justify-center">
+                                <span className="text-zinc-200">{`ID: ${machine.id} - Bet Amount: $${machine.betAmounts.join(' $')}`}</span>
+                            </div> 
+                        </div>
                     ))}
-                </ul>
+              </div>
             
         </div>
 

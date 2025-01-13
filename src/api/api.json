@@ -2,17 +2,17 @@
      "slotMachines": [
          {
             "id": 1,
-            "name": "Slot Machine A",
+            "name": "Spin Jackpot",
             "betAmounts": [1, 5, 10, 20]
             },
             {
             "id": 2,
-            "name": "Slot Machine B",
+            "name": "Reel Riches",
             "betAmounts": [2, 5, 25, 50]
             },
             {
             "id": 3,
-            "name": "Slot Machine C",
+            "name": "Golden Spins",
             "betAmounts": [5, 10, 25, 100]
             }
             ]
