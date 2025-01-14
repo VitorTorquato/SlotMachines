@@ -4,7 +4,7 @@ import { SlotMachineInterface } from "../types/slotMachine.type";
 export type SlotMachineParams = {
    id:number;
    name:string;
-   availableBetAmount: number[];
+   availableBetAmounts: number[];
 }
 
 
@@ -15,7 +15,7 @@ export class SlotMachine implements SlotMachineInterface {
         availableBetAmounts: number[];
 
 
-        constructor(id:number,name:string,availableBetAmounts: number[] ){
+        constructor({id, name, availableBetAmounts}: SlotMachineParams){
             this.id = id;
             this.name = name;
             this.betAmount = 0
