@@ -2,15 +2,14 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import { SelectedSlotMachine } from './components/iframes/selected-slot-machine/SelectedSlotMachine';
-import { Container } from "react-dom";
+import { Container } from "./components";
 
-import '.index.css'
-import { GoContainer } from "react-icons/go";
+import './index.css'
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <GoContainer>
+        <Container>
             <SelectedSlotMachine/>
-        </GoContainer>
+        </Container>
     </StrictMode>
 )
