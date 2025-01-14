@@ -1,0 +1,1 @@
+export { type SlotMachineInterface} from './slotMachine.type';

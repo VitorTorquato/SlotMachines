@@ -1,6 +1,14 @@
 import { SlotMachineInterface } from "../types/slotMachine.type";
 
-class SlotMachine implements SlotMachineInterface {
+
+export type SlotMachineParams = {
+   id:number;
+   name:string;
+   availableBetAmount: number[];
+}
+
+
+export class SlotMachine implements SlotMachineInterface {
         id:number;
         name: string;
         betAmount: number;
