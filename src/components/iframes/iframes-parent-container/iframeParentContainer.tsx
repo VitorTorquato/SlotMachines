@@ -44,7 +44,7 @@ export function IframeParentComponent(){
     } , [])
 
     return (
-        <div className="w-full flex gap-9  justify-center">
+        <div className="w-full flex flex-col md:flex-row gap-9  justify-center">
         <div className="flex-1 border  flex flex-col">
             <div className="px-1 py-1">
                 <span className=" text-black text-xs bg-slate-100 p-1 rounded-md">{`Balance: ${userBalance.toLocaleString('en-gb' , {style:'currency' , currency: 'EUR'}).replace(/(\.00|\.0+)$/, '')}`}</span>
