@@ -83,7 +83,15 @@ export function SelectedSlotMachine() {
 
     
         
-       
+        if(!currentBet){
+            alert('hello')
+            return
+        }
+        
+        if(userBalance <= 0 || userBalance < currentBet){
+            alert('hello')
+            return;
+        }
 
       
 
@@ -95,13 +103,7 @@ export function SelectedSlotMachine() {
                 throw new Error('Slot machine is not set');
             }
 
-            if(!currentBet){
-                return
-            }
-            
-            if(userBalance <= 0 || userBalance < currentBet){
-                return;
-            }
+           
 
            
             const result = slotMachine.spin();
