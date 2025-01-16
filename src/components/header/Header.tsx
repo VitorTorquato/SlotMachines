@@ -31,9 +31,9 @@ export function Header(){
           style={{backgroundColor: '#0C0C0C'}}
           >
             <header className='w-full max-w-7xl mx-auto flex items-center justify-between px-4 text-white'>
-                <div>
+                <Link to='/'>
                     <img className='w-32 md:w-40' src={gamingCorpsLogo} alt="gaming corpos logo png"/>
-                </div>
+                </Link>
 
                 <nav className='flex items-center gap-3'>
                     {
