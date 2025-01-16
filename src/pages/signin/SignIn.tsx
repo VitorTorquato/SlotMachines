@@ -8,7 +8,6 @@ import {
     signInWithEmailAndPassword
 } from 'firebase/auth';
 
-import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export function SignIn(){
 
@@ -42,11 +41,19 @@ export function SignIn(){
          className="w-full h-full flex items-center justify-center" 
         style={{backgroundColor: '#0C0C0C'}}
         >
-            <main className="w-full max-w-7xl h-screen mx-auto flex flex-col md:flex-row">
+            <main className="w-full max-w-7xl h-screen mx-auto flex flex-col  md:flex-row px-2">
+            
+            <div className="md:hidden w-full md:h-full h-3 flex-col items-center justify-center">
+                        <img 
+                        className="w-60 md:w-96 mx-auto mt-16"
+                        src={GamingCorpsLogo} alt="Logo Gaming Corps" />
+
+                       
+            </div>
 
                     <div className="w-full h-full p-9 flex items-center justify-center">
                         <form className="w-full max-w-md h-full max-h-max flex flex-col items-center justify-between gap-2">
-                                <h1 className="text-white text-4xl font-medium mb-2">Welcome back</h1>
+                                <h1 className="text-white text-3xl md:text-4xl text-center font-medium mb-2">Welcome back</h1>
                                 <p className="text-white text-2xl mb-5 text-center">Please enter your details</p>
                                 
                                 
@@ -85,22 +92,12 @@ export function SignIn(){
                         </form>
                     </div>
 
-                    <div className="hidden w-full h-full md:flex flex-col gap-9 items-center justify-center ">
+                    <div className="hidden w-full md:h-full h-3 md:flex flex-col items-center justify-center">
                         <img 
-                        className="w-96"
+                        className="w-60 md:w-96 mx-auto mt-16"
                         src={GamingCorpsLogo} alt="Logo Gaming Corps" />
 
-                         <div className="w-2/4 flex items-center justify-between">
-                                            <Link to='https://x.com/gamingcorps' target='_blank'>
-                                                <FaTwitter size={26} color="#FFF"/>
-                                            </Link>
-                                            <Link to='https://www.facebook.com/hellogamingcorps/' target='_blank'>
-                                                <FaFacebookF size={26} color="#FFF"/>
-                                            </Link>
-                                            <Link to='https://www.instagram.com/gaming_corps/' target='_blank'>
-                                                <FaInstagram size={26} color="#FFF"/> 
-                                            </Link>
-                                        </div>
+                      
                     </div>
             </main>
         </div>

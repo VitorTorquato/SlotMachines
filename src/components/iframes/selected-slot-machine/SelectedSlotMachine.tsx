@@ -10,7 +10,6 @@ import { SlotMachine } from '../../../utils/classes';
 
 import SlotMachineImg from '../../../assets/slot-machine.png'
 
-import toast from 'react-hot-toast';
 
 export function SelectedSlotMachine() {
 
@@ -84,12 +83,12 @@ export function SelectedSlotMachine() {
     
         
         if(!currentBet){
-            alert('hello')
+            alert('Place a bet first')
             return
         }
         
         if(userBalance <= 0 || userBalance < currentBet){
-            alert('hello')
+            alert('Insuficient balance')
             return;
         }
 
@@ -103,9 +102,7 @@ export function SelectedSlotMachine() {
                 throw new Error('Slot machine is not set');
             }
 
-           
-
-           
+        
             const result = slotMachine.spin();
 
             
@@ -182,7 +179,7 @@ export function SelectedSlotMachine() {
                         backgroundColor:'#16307C'
                     }}
                     onClick={hanleSpin}
-                    disabled={currentBet === 0 || (userBalance || 0) < currentBet}
+                   
                 >
                     PLAY
                 </button>

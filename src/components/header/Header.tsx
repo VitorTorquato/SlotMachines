@@ -39,7 +39,7 @@ export function Header(){
                     {
                         !signed ? (
                             <Link to='/register'>
-                                SingIn
+                                SIGN IN
                             </Link>
                         ): ( 
                             <button onClick={handleLogOut}>
