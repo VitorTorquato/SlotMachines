@@ -1,12 +1,16 @@
 import {FiLogOut} from 'react-icons/fi'
 import gamingCorpsLogo from '../../assets/GamingCorpsLogo.png';
 
+import { Link , useNavigate} from 'react-router-dom';
 
 import { useContext} from 'react';
-import { AuthContext } from '../../context';
-import { Link , useNavigate} from 'react-router-dom';
+import { AuthContext } from '../../context/authContext';
+
+
 import { signOut } from 'firebase/auth';
 import {auth} from '../../services/firebaseConection';
+
+
 
 export function Header(){
 
@@ -16,15 +20,16 @@ export function Header(){
 
     async function handleLogOut(){
         await signOut(auth);
+        navigate('/login')
 
-        if(!signed){
-            navigate('/login')
-        }
+        
     }
 
     return(
-        <div className='w-full flex items-center justify-center h-20 md:h-28 bg-zinc-950
-          drop-shadow-md'>
+        <div className='w-full flex items-center justify-center h-20 md:h-28
+          drop-shadow-md'
+          style={{backgroundColor: '#0C0C0C'}}
+          >
             <header className='w-full max-w-7xl mx-auto flex items-center justify-between px-4 text-white'>
                 <div>
                     <img className='w-32 md:w-40' src={gamingCorpsLogo} alt="gaming corpos logo png"/>

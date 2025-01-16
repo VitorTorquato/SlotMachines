@@ -6,7 +6,9 @@ import GamingCorpsLogo  from "../../assets/GamingCorpsLogo.png";
 import {auth} from '../../services/firebaseConection';
 import {
     signInWithEmailAndPassword
-} from 'firebase/auth'
+} from 'firebase/auth';
+
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export function SignIn(){
 
@@ -20,7 +22,9 @@ export function SignIn(){
     function onSubmit(e:FormEvent){
         e.preventDefault();
 
-    
+        if(!email || !password){
+            alert('Please fill all the fields')
+        }
 
         signInWithEmailAndPassword(auth, email, password)
         .then((user) => {
@@ -81,10 +85,22 @@ export function SignIn(){
                         </form>
                     </div>
 
-                    <div className="hidden w-full h-full md:flex items-center justify-center ">
+                    <div className="hidden w-full h-full md:flex flex-col gap-9 items-center justify-center ">
                         <img 
                         className="w-96"
                         src={GamingCorpsLogo} alt="Logo Gaming Corps" />
+
+                         <div className="w-2/4 flex items-center justify-between">
+                                            <Link to='https://x.com/gamingcorps' target='_blank'>
+                                                <FaTwitter size={26} color="#FFF"/>
+                                            </Link>
+                                            <Link to='https://www.facebook.com/hellogamingcorps/' target='_blank'>
+                                                <FaFacebookF size={26} color="#FFF"/>
+                                            </Link>
+                                            <Link to='https://www.instagram.com/gaming_corps/' target='_blank'>
+                                                <FaInstagram size={26} color="#FFF"/> 
+                                            </Link>
+                                        </div>
                     </div>
             </main>
         </div>

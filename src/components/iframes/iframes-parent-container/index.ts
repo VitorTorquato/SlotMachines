@@ -1,0 +1,1 @@
+export {IframeParentComponent} from './iframeParentContainer'

@@ -23,12 +23,13 @@ type AuthContextData = {
 export const AuthContext = createContext({} as AuthContextData);
 
 
-export function AuthProvider({children} : AuthProviderProps){
+function AuthProvider({children} : AuthProviderProps){
 
 
     const [user,setUser] = useState<UserProps | null>(null);
     
     useEffect(() => {
+
         const onsub = onAuthStateChanged(auth , (user) => {
             if(user){
                 setUser({
@@ -60,7 +61,7 @@ export function AuthProvider({children} : AuthProviderProps){
     return(
         <AuthContext.Provider
         value={{
-            signed :!!user,
+            signed: !!user,
             user,
             handleInfoUser
 
@@ -71,3 +72,4 @@ export function AuthProvider({children} : AuthProviderProps){
     )
 }
 
+export default AuthProvider

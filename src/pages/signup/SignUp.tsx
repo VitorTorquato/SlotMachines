@@ -10,17 +10,12 @@ import {
 } from 'firebase/auth';
 
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
-import { AuthContext } from "../../context";
+
+import { AuthContext } from "../../context/authContext";
 
 
-import { Input } from "../../components";
 
-
-// interface SignUpProps{
-//     name:string;
-//     email:string;
-//     password:string | number
-// }
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 
 export function SignUp(){
@@ -39,6 +34,10 @@ export function SignUp(){
 
     async function onSubmit(e:FormEvent){
         e.preventDefault()
+
+        if(!name || !email || !password){
+            alert('Please fill all the fields')
+        }
 
         createUserWithEmailAndPassword(auth, email,password)
         .then(async (user) => {
@@ -68,10 +67,22 @@ export function SignUp(){
             <main className="w-full max-w-7xl h-screen mx-auto flex flex-col md:flex-row">
 
 
-                    <div className="hidden w-full h-full md:flex items-center justify-center ">
+            <div className="hidden w-full h-full md:flex flex-col gap-9 items-center justify-center ">
                         <img 
                         className="w-96"
                         src={GamingCorpsLogo} alt="Logo Gaming Corps" />
+
+                         <div className="w-2/4 flex items-center justify-between">
+                                            <Link to='https://x.com/gamingcorps' target='_blank'>
+                                                <FaTwitter size={26} color="#FFF"/>
+                                            </Link>
+                                            <Link to='https://www.facebook.com/hellogamingcorps/' target='_blank'>
+                                                <FaFacebookF size={26} color="#FFF"/>
+                                            </Link>
+                                            <Link to='https://www.instagram.com/gaming_corps/' target='_blank'>
+                                                <FaInstagram size={26} color="#FFF"/> 
+                                            </Link>
+                                        </div>
                     </div>
 
                     <div className="w-full h-full p-9 flex items-center justify-center">
