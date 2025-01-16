@@ -41,7 +41,7 @@ export function Home(){
                             
                             <h2 className='text-white text-3xl mb-8'>Spin Big, Win Bigger in Triple Spin Slots!</h2>
                             
-                            <p className='text-white text-base mb-8'>Step into the electrifying world of Triple Spin Slots, where every spin is a chance to strike it big! This exhilarating slot machine game offers not one, not two, but three different machines to choose. Whether you're in the mood for a casual spin or ready to max out your bets, Triple Spin Slots is here to deliver a thrill-packed ride with every pull of the lever.</p>
+                            <p className='text-white text-base mb-8'>Step into the electrifying world of Triple Spin Slots, where every spin is a chance to strike it big! This exhilarating slot machine game offers not one, not two, but three different machines to choose. Whether you're in the mood for a casual spin or ready to max out your bets.</p>
 
 
                             <button
