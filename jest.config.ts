@@ -11,7 +11,7 @@ const config: Config.InitialOptions = {
     }]
   },
   moduleNameMapper: {
-    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/.jest/mocks/fileMock.js',
+   '\\.(png|jpg|jpeg|gif|svg)$': '<rootDir>/.jest/mocks/fileMock.js',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
   },
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
