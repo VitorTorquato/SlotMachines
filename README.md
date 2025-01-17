@@ -17,10 +17,13 @@ A fun Slot Machine game built with React, Vite, TypeScript, and Tailwind CSS! Sp
    cd <SlotMachines>
 
 2. Install dependencies:
-   npm install
 
-3. Start the development server
+    npm install
+
+4. Start the development server
+
    npm run dev
 
-4. Open your browser and navigate to
+6. Open your browser and navigate to
+
       http://localhost:5173/
