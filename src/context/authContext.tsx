@@ -57,7 +57,6 @@ function AuthProvider({children} : AuthProviderProps){
         })
     }
 
-
     return(
         <AuthContext.Provider
         value={{

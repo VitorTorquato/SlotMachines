@@ -1,32 +1,26 @@
-import { FiLoader } from 'react-icons/fi';
-
 import { useState } from "react";
 
+import { FiLoader } from 'react-icons/fi';
 
-import slotApiData from '../../../api/api.json';
 import { useReadPostMessage, type PostMessageHandler } from '../../../utils/hooks';
+import slotApiData from '../../../api/api.json';
 import { SlotMachine } from '../../../utils/classes';
 
 
 import SlotMachineImg from '../../../assets/slot-machine.png'
 
-
 export function SelectedSlotMachine() {
-
-
-   
 
     const [currentBet, setCurrentBet] = useState<number>(0);
     const [spinning, setSpinning] = useState(false);
     const [spinningResult, setSpinningResult] = useState<number | string>("Spin to win")
-    const [userBalance , _setUserBalance] = useState<number>(100)
-    
+    const [userBalance , _setUserBalance] = useState<number>(100)    
     const [slotMachine, setSlotMachine] = useState<SlotMachine | null>(null);
 
  
     const updateSlotMachine: PostMessageHandler = (postMessageData) => {
+       try{     
         if (postMessageData.type !== 'slot-machine-updated') {
-            // Not a message we want to interact with.
             return;
         }
 
@@ -44,7 +38,6 @@ export function SelectedSlotMachine() {
             throw new Error('Selected slot machine not found');
         }
 
-
         setSlotMachine(
             new SlotMachine({
                 id: selectedMachine.id,
@@ -54,6 +47,10 @@ export function SelectedSlotMachine() {
         );
 
         return;
+
+       }catch(e:any){
+        alert(e.message)
+       }
     }
 
     useReadPostMessage(updateSlotMachine);
@@ -70,79 +67,77 @@ export function SelectedSlotMachine() {
     }
 
     function handleBet(bet: number) {
+       try{
         if (!slotMachine) {
             throw new Error('Slot machine is not set');
         }
 
         setCurrentBet(bet);
         slotMachine.placeBet(bet);
+
+       }catch(e:any){
+            alert(e.message)
+       }
     }
 
     function hanleSpin() {
 
-    
-        
-        if(!currentBet){
-            alert('Place a bet first')
-            return
-        }
-        
-        if(userBalance <= 0 || userBalance < currentBet){
-            alert('Insuficient balance')
-            return;
-        }
-
-      
-
-        setSpinning(true)
-
-      
-        setTimeout(() => {
-            if (!slotMachine) {
-                throw new Error('Slot machine is not set');
+        try{
+            if(!currentBet){
+                alert('Please, place a bet first')
+                return
             }
-
+            
+            if(userBalance <= 0 || userBalance < currentBet){
+                alert('Insufficient balance')
+                return;
+            }
+    
+            setSpinning(true)
+          
+            setTimeout(() => {
+                if (!slotMachine) {
+                    throw new Error('Slot machine is not set');
+                }
+            
+                const result = slotMachine.spin();
+            
+                setSpinningResult(result)
+    
+                const updatedUserBalance = userBalance + result;
+                _setUserBalance(updatedUserBalance);
+    
+                window.parent.postMessage(
+                    {
+                        type: "Balance-updated",
+                        payload: {userBalance: updatedUserBalance}
+                    } , '*'
+                )
         
-            const result = slotMachine.spin();
-
-            
-            
-            setSpinningResult(result)
-
-            const updatedUserBalance = userBalance + result;
-            _setUserBalance(updatedUserBalance);
-
-            window.parent.postMessage(
-                {
-                    type: "Balance-updated",
-                    payload: {userBalance: updatedUserBalance}
-                } , '*'
-            )
-
-
-            setSpinning(false);
-
-        }, 2000)
+                setSpinning(false);
+    
+            }, 2000)
+        }catch(e:any){
+            alert(e.alert)
+        }            
     }
-
-
 
     return (
         <div className="w-full h-full flex flex-col mt-4 gap-8">
             <div className='flex flex-col'>
                 <h2 className="text-white text-3xl font-bold text-center mb-2">{slotMachine.name.toUpperCase()}</h2>
-                <h3 className="text-white text-xl mt-4 text-center mb-2">Place your bet: {currentBet.toLocaleString('en-GB' , {style:'currency' , currency: 'EUR'}).replace(/(\.00|\.0+)$/, '')}</h3>
+                <h3 className="text-white text-xl mt-4 text-center mb-2">Place your bet: {currentBet.toLocaleString('en-GB', { style: 'currency', currency: 'EUR' }).replace(/(\.00|\.0+)$/, '')}</h3>
 
                 <div className="flex w-11/12 mx-auto">
                     {
                         slotMachine.availableBetAmounts.map((amount: number) => (
                             <button
-                                
-                            className="flex items-center justify-center w-full  border  text-xl font-medium text-black hover:scale-105 hover:-translate-y-1 duration-300 ease-in-out"
-                            style={{backgroundColor: '#28BAE9'}}
+
+                                className="flex items-center justify-center w-full  border  text-xl font-medium text-black hover:scale-105 hover:-translate-y-1 duration-300 ease-in-out"
+                                style={{ backgroundColor: '#28BAE9' }}
                                 onClick={() => handleBet(amount)}
-                                key={amount}>{amount.toLocaleString('en-GB' , {
-                                    style:'currency',
+                                key={amount}>{amount.toLocaleString('en-GB', {
+                                    style: 'currency',
                                     currency: 'EUR'
                                 }).replace(/(\.00|\.0+)$/, '')}</button>
                         ))
@@ -153,21 +148,21 @@ export function SelectedSlotMachine() {
                     {
                         spinning ? (
                             <FiLoader className={!spinning ? 'block' : 'animate-spin'} size={62} color='#FFF' />
-                        ) :  
+                        ) :
                             (
                                 typeof spinningResult === 'number' && spinningResult > 0 ? (
-                                  <div className='text-white text-2xl font-medium gap-2 animate-bounce duration-[2000ms]'>
-                                    Win <span className='text-4xl font-bold'>{spinningResult.toLocaleString('en-GB' , {style:'currency' , currency:'EUR'}).replace(/(\.00|\.0+)$/, '')}</span>
-                                  </div>
+                                    <div className='text-white text-2xl font-medium gap-2 animate-bounce duration-[2000ms]'>
+                                        Win <span className='text-4xl font-bold'>{spinningResult.toLocaleString('en-GB', { style: 'currency', currency: 'EUR' }).replace(/(\.00|\.0+)$/, '')}</span>
+                                    </div>
                                 ) : typeof spinningResult === 'number' && spinningResult <= 0 ? (
-                                  <div className='text-white text-2xl font-medium gap-2 animate-bounce duration-[2000ms]'>
-                                    Lose <span className='text-4xl font-bold text-red-500 '>{spinningResult.toLocaleString('en-GB' , {style:'currency' , currency:'EUR'}).replace(/(\.00|\.0+)$/, '')}</span>
-                                  </div>
+                                    <div className='text-white text-2xl font-medium gap-2 animate-bounce duration-[2000ms]'>
+                                        Lose <span className='text-4xl font-bold text-red-500 '>{spinningResult.toLocaleString('en-GB', { style: 'currency', currency: 'EUR' }).replace(/(\.00|\.0+)$/, '')}</span>
+                                    </div>
                                 ) : (
-                                  <span className='text-white text-2xl font-bold'>{spinningResult}</span>
+                                    <span className='text-white text-2xl font-bold'>{spinningResult}</span>
                                 )
-                          )
-                        }
+                            )
+                    }
                 </div>
             </div>
 
@@ -175,11 +170,12 @@ export function SelectedSlotMachine() {
                 <button
                     className="w-1/2 p-2 flex items-center justify-center mx-auto text-white text-2xl font-medium rounded-md hover:scale-105 hover:-translate-y-1 hover:bg-blue-400  duration-300 mt-2"
                     style={{
-                        display : spinning ? 'none' : 'flex',
-                        backgroundColor:'#16307C'
+                        display: spinning ? 'none' : 'flex',
+                        backgroundColor: '#16307C'
+
                     }}
                     onClick={hanleSpin}
-                   
+                    disabled={currentBet === 0}
                 >
                     PLAY
                 </button>

@@ -23,14 +23,11 @@ export class SlotMachine implements SlotMachineInterface {
         }
 
          placeBet(betAmount: number): void {
-             if(betAmount <= 0){
-                alert("Bet amount must be greater than zero")
-             }
-             this.betAmount = betAmount;
-             
+            this.betAmount = betAmount;
             return;
          }
 
+         //Method to return a random positive or negative number
          spin(): number {
              
 

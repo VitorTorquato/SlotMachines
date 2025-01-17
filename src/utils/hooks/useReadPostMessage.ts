@@ -19,7 +19,7 @@ export function useReadPostMessage(handler: PostMessageHandler){
         //add event listener
         window.addEventListener('message' , handlePostMessage);
 
-        //remove evente listener
+        //remove event listener
         return () => {
             window.removeEventListener('message' , handlePostMessage);
         };
