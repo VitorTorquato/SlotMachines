@@ -1,8 +1,16 @@
 {
-  "rewrites" : [
+    "rewrites": [
       {
-          "source": "/(.*)",
-          "destination" : "/"
+        "source": "/slot-machine-list.html",
+        "destination": "/slot-machine-list.html"
+      },
+      {
+        "source": "/selected-slot-machine.html",
+        "destination": "/selected-slot-machine.html"
+      },
+      {
+        "source": "/(.*)",
+        "destination": "/index.html"
       }
-  ]
-}
+    ]
+  }
