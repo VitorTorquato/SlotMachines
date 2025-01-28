@@ -1,5 +1,3 @@
-import GamingCorpsLogo  from "../../assets/GamingCorpsLogo.png";
-
 import { Link , useNavigate } from "react-router-dom";
 
 import {auth} from '../../services/firebaseConection';
@@ -65,9 +63,10 @@ export function SignUp(){
 
 
                 <div className="w-full md:h-full h-3 md:flex flex-col items-center justify-center">
-                    <img
-                        className="w-60 md:w-96 mx-auto mt-16"
-                        src={GamingCorpsLogo} alt="Logo Gaming Corps" />
+                <h1
+                    className="text-center text-4xl md:text-6xl font-extrabold mx-auto mt-16" style={{color:'#16307C'}}>
+                        SlotMachines
+                    </h1>
                 </div>
 
                 <div className="w-full h-full p-9 flex items-center justify-center">

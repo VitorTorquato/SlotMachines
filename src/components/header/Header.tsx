@@ -8,7 +8,6 @@ import { AuthContext } from '../../context/authContext';
 
 import {auth} from '../../services/firebaseConection';
 
-import gamingCorpsLogo from '../../assets/GamingCorpsLogo.png';
 
 export function Header(){
 
@@ -27,7 +26,10 @@ export function Header(){
         >
             <header className='w-full max-w-7xl mx-auto flex items-center justify-between px-4 text-white'>
                 <Link to='/'>
-                    <img className='w-32 md:w-40' src={gamingCorpsLogo} alt="gaming corpos logo png" />
+                    <h1 
+                    className='text-3xl md:text-4xl font-bold'
+                    style={{color:'#16307C'}}
+                    >SlotMachines</h1>
                 </Link>
 
                 <nav className='flex items-center gap-3'>
