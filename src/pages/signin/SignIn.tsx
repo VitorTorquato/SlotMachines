@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Link , useNavigate} from "react-router-dom";
-import GamingCorpsLogo  from "../../assets/GamingCorpsLogo.png";
+
 
 
 import {auth} from '../../services/firebaseConection';
@@ -49,10 +49,9 @@ export function SignIn(){
             <main className="w-full max-w-7xl h-screen mx-auto flex flex-col  md:flex-row px-2">
 
                 <div className="md:hidden w-full md:h-full h-3 flex-col items-center justify-center">
-                    <img
-                    className="w-60 md:w-96 mx-auto mt-16"
-                    src={GamingCorpsLogo} alt="Logo Gaming Corps"
-                    />
+                    <h1 className="text-center text-4xl md:text-6xl font-extrabold mx-auto mt-16" style={{color:'#16307C'}}>
+                        SlotMachines
+                    </h1>
                 </div>
 
                 <div className="w-full h-full p-9 flex items-center justify-center">
@@ -96,10 +95,9 @@ export function SignIn(){
                 </div>
 
                 <div className="hidden w-full md:h-full h-3 md:flex flex-col items-center justify-center">
-                    <img
-                    className="w-60 md:w-96 mx-auto mt-16"
-                    src={GamingCorpsLogo} alt="Logo Gaming Corps"
-                    />
+                <h1 className="text-center text-4xl md:text-6xl font-extrabold mx-auto mt-16" style={{color:'#16307C'}}>
+                        SlotMachines
+                    </h1>
                 </div>
             </main>
         </div>
